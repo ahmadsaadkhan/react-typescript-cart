@@ -14,7 +14,7 @@ export const CartItem = ({ id, quantity }: cartItemType) => {
     return (
         <Stack direction="horizontal" gap={2} className="d-flex align-items-center">
             <img
-                src={item.imgUrl}
+                src={item?.imgUrl}
                 style={{
                     width: "125px",
                     height: "75px",
@@ -23,7 +23,7 @@ export const CartItem = ({ id, quantity }: cartItemType) => {
             />
             <div className="me-auto">
                 <div>
-                    {item.name}{" "}
+                    {item?.name}{" "}
                     {quantity > 1 && (
                         <span
                             className="text-muted"
@@ -34,11 +34,11 @@ export const CartItem = ({ id, quantity }: cartItemType) => {
                     )}
                 </div>
                 <div className="text-muted" style={{ fontSize: ".75rem" }}>
-                    {formatCurrency(item.price)}
+                    {formatCurrency(item?.price || 0)}
                 </div>
             </div>
-            <div>{formatCurrency(item.price)}</div>
-            <Button variant="outline-danger" size="sm" onClick={() => removeFromCart(item.id)}>&times;</Button>
+            <div>{formatCurrency(item?.price || 0)}</div>
+            <Button variant="outline-danger" size="sm" onClick={() => removeFromCart(item?.id || 0)}>&times;</Button>
         </Stack>
     )
 }
